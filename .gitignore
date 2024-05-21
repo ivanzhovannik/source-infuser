@@ -1,5 +1,5 @@
 # python
-__pycache__/*
+__pycache__/
 
 # PSI specific
 .psi-ignore

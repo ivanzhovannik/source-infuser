@@ -3,6 +3,7 @@ import logging
 import source_infuser as psi
 
 def main():
+    logging.getLogger(__name__)
     psi.logs.setup_logging('DEBUG')
 
     parser = argparse.ArgumentParser(description='Generate a markdown report of the project structure and file contents.')
