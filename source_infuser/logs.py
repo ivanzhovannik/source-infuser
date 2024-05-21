@@ -9,7 +9,6 @@ log_levels = {
     'CRITICAL': logging.CRITICAL
 }
 
-
 def setup_logging(level: str = 'INFO') -> None:
     level = log_levels.get(level.upper(), logging.INFO)
     stderr_handler = logging.StreamHandler(stream=sys.stderr)
@@ -17,5 +16,4 @@ def setup_logging(level: str = 'INFO') -> None:
         "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
     )
     stderr_handler.setFormatter(formatter)
-    logging.basicConfig(level=level, handlers=[stderr_handler])
-    logging.info(f"Logging setup at level - {logging.getLevelName(level)}")
+    logging.basicConfig(level=level, handlers=[stderr_handler], force=True)

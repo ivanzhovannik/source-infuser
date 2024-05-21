@@ -1,15 +1,14 @@
 import logging
 import os
 from pathlib import Path
-import fnmatch
+from .ignore import IgnoreRules
 
-with open('test/.psi-ignore', 'r') as f:
-    IGNORE_PATTERNS = f.read().split('\n')
+logger = logging.getLogger(__name__)
 
-logging.getLogger(__name__)
-logging.info("\n\t".join(["Ignored Patterns:", *IGNORE_PATTERNS]))
+ignore_rules = IgnoreRules('.psi-ignore')
 
 def generate_report(root_dir):
+    logger.info("\n\t".join(["Ignored Patterns:", *ignore_rules.ignore_patterns]))
     report = []
 
     # Add project name (directory name)
@@ -25,7 +24,7 @@ def generate_report(root_dir):
     # List files and their content
     report.append("file_content:")
     for file_path in Path(root_dir).rglob('*'):
-        if file_path.is_file() and not ignore_path(file_path, root_dir):
+        if file_path.is_file() and not ignore_rules.should_ignore(file_path, root_dir):
             try:
                 with open(file_path, 'r', encoding='utf-8') as file:
                     content = file.read()
@@ -33,23 +32,16 @@ def generate_report(root_dir):
                 report.append(content)
                 report.append("```")
             except Exception as e:
-                print(f"Failed to process {file_path} due to: {e}")
+                logger.error(f"Failed to process {file_path} due to: {e}")
 
     return "\n".join(report)
-
-def ignore_path(path, root_dir) -> bool:
-    relative_path = path.relative_to(root_dir).as_posix()
-    for pattern in IGNORE_PATTERNS:
-        if fnmatch.fnmatch(relative_path, pattern) or fnmatch.fnmatch(path.name, pattern):
-            return True
-    return False
 
 def generate_tree(root_dir):
     tree_lines = []
 
     for root, dirs, files in os.walk(root_dir):
         # Filter out ignored directories
-        dirs[:] = [d for d in dirs if not ignore_path(Path(root) / d, root_dir)]
+        dirs[:] = [d for d in dirs if not ignore_rules.should_ignore(Path(root) / d, root_dir)]
         
         level = root.replace(root_dir, '').count(os.sep)
         indent = ' ' * 4 * (level)
@@ -57,8 +49,7 @@ def generate_tree(root_dir):
         subindent = ' ' * 4 * (level + 1)
         for f in files:
             file_path = Path(root) / f
-            if not ignore_path(file_path, root_dir):
+            if not ignore_rules.should_ignore(file_path, root_dir):
                 tree_lines.append(f"{subindent}└── {f}")
 
     return "\n".join(tree_lines)
-

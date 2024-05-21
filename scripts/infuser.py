@@ -3,8 +3,11 @@ import logging
 import source_infuser as psi
 
 def main():
-    logging.getLogger(__name__)
+    # Set up logging before any logging calls
+    logger = logging.getLogger(__name__)
     psi.logs.setup_logging('DEBUG')
+    logger.debug("Logging setup called")
+    print("Logging setup called")  # Debug print to verify setup
 
     parser = argparse.ArgumentParser(description='Generate a markdown report of the project structure and file contents.')
     parser.add_argument('-r', '--root', type=str, default='.', help='Root directory of the project')
@@ -15,9 +18,9 @@ def main():
     if args.output:
         with open(args.output, 'w', encoding='utf-8') as f:
             f.write(report)
-        logging.info(f"Report generated and saved to {args.output}")
+        logger.info(f"Report generated and saved to {args.output}")
     else:
-        logging.info(report)
+        logger.info(report)
 
 if __name__ == "__main__":
     main()
