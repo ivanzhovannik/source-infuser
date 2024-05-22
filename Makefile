@@ -6,17 +6,18 @@ clean:
 	rm -rf build dist *.egg-info
 
 build: clean
+	pip install wheel
 	python setup.py sdist bdist_wheel
 
 upload: build
 	twine upload dist/*
 
+release: upload
+	@echo "Released version $(VERSION)"
+
 tag:
 	git tag -a v$(VERSION) -m "Release version $(VERSION)"
 	git push --tags
-
-release: upload
-	@echo "Released version $(VERSION)"
 
 tag-force:
 	git tag -f v$(VERSION) -m "Release version $(VERSION) remastered"
