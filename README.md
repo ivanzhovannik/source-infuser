@@ -50,6 +50,14 @@ source_infuser -r . -o report.md
 
 In case you want to ignore parts of your root using `.gitignore` patters, just add `.psi-ignore` file to your current directory.
 
+## Contributions
+We welcome contributions! Please follow these steps:
+
+1. Go to [source-infuser/issues](https://github.com/ivanzhovannik/source-infuser/issues).
+2. If there is no issue similar to the one you encountered, create a new issue.
+3. Describe your case in detail to help us better reproduce and understand the problem.
+4. If you solved the problem yourself, please go ahead and create a pull-request, tag @ivanzhovannik to review.
+
 ## License
 This package is free to use for research or commercial purposes. Any part can be reproduced; just mention the source.
 

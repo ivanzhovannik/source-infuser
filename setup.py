@@ -1,18 +1,13 @@
 from setuptools import setup, find_packages
+from source_infuser import __version__
 
 def read_file(filename):
     with open(filename, encoding='utf-8') as f:
         return f.read()
 
-def get_version():
-    version = {}
-    with open("source_infuser/__init__.py") as fp:
-        exec(fp.read(), version)
-    return version['__version__']
-
 setup(
     name='source_infuser',
-    version=get_version(),  # Update this version before each release
+    version=__version__,  # Update this version before each release
     author='Ivan Zhovannik',
     author_email='i.zhovannik-at-maastrichtuniversity-dot-nl',
     description='A package to prepare your software project for continuous infusion into your AI assistant',
