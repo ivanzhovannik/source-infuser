@@ -18,7 +18,7 @@ tag:
 release: upload
 	@echo "Released version $(VERSION)"
 
-tag-f:
+tag-force:
 	git tag -f v$(VERSION) -m "Release version $(VERSION) remastered"
 	git push -f origin v$(VERSION)
 
