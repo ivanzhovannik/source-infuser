@@ -1,6 +1,9 @@
 # Source Infuser
 
+![PyPI](https://img.shields.io/pypi/v/source_infuser)
+
 <img src="docs/source_infuser_logo.png" alt="Source Infuser Logo" width="200" height="200">
+
 
 Source Infuser helps keep your AI assistant updated with the changes you perform in your software project. It generates detailed reports of your project's structure, which can be continuously infused into your AI assistant.
 
