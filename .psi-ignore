@@ -1,0 +1,22 @@
+# python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+*.egg-info
+dist/*
+build/*
+
+# git 
+.git/*
+.git
+
+# secrets
+config/.secrets.yaml
+
+# psi-specific - do not remove
+report.md
+
+# graphics
+*.png

@@ -1,6 +1,12 @@
 # python
 __pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+
 
 # PSI specific
-.psi-ignore
 report.md

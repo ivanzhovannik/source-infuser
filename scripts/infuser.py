@@ -2,12 +2,12 @@ import argparse
 import logging
 import source_infuser as psi
 
+# Set up logging before any logging calls
+logger = logging.getLogger(__name__)
+psi.logs.setup_logging('DEBUG')
+logger.debug("Logging setup called")
+
 def main():
-    # Set up logging before any logging calls
-    logger = logging.getLogger(__name__)
-    psi.logs.setup_logging('DEBUG')
-    logger.debug("Logging setup called")
-    print("Logging setup called")  # Debug print to verify setup
 
     parser = argparse.ArgumentParser(description='Generate a markdown report of the project structure and file contents.')
     parser.add_argument('-r', '--root', type=str, default='.', help='Root directory of the project')
