@@ -12,7 +12,7 @@ setup(
     name='source_infuser',
     version=get_version(),  # Update this version before each release
     author='Ivan Zhovannik',
-    author_email='i.zhovannik-at-maastrichtuniversity-dot-nl',
+    author_email='i.zhovannik@maastrichtuniversity.nl',
     description='A package to prepare your software project for continuous infusion into your AI assistant',
     long_description=read_file('README.md'),
     long_description_content_type='text/markdown',
@@ -30,8 +30,8 @@ setup(
     python_requires='>=3.9',
     entry_points={
         'console_scripts': [
-            'source_infuser=scripts.infuser:main',
-            'psi=scripts.infuser:main'
+            'source_infuser=source_infuser.scripts.infuser:main',
+            'psi=source_infuser.scripts.infuser:main'
         ],
     },
 )
