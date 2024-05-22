@@ -15,9 +15,8 @@ tag:
 	git tag -a v$(VERSION) -m "Release version $(VERSION)"
 	git push --tags
 
-release: tag upload
+release: upload
 	@echo "Released version $(VERSION)"
-
 
 .PHONY: test
 test:
