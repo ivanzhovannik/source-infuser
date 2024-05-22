@@ -1,4 +1,4 @@
-.PHONY: clean build upload tag release rm-tag
+.PHONY: clean build upload release tag tag-force
 
 VERSION=$(shell python setup.py --version)
 
