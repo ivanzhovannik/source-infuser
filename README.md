@@ -15,6 +15,12 @@ Source Infuser helps keep your AI assistant updated with the changes you perform
 
 ## Installation
 
+### From PyPi (preferred)
+
+```shell
+pip install source-infuser
+```
+
 ### From Source
 
 You can install the package directly from the GitHub repository:
@@ -23,12 +29,6 @@ You can install the package directly from the GitHub repository:
 git clone https://github.com/ivanzhovannik/source-infuser.git
 cd source-infuser
 pip install .
-```
-
-### From PyPi (Feature Under Development)
-
-```shell
-pip install source_infuser
 ```
 
 ## Usage
