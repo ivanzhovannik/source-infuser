@@ -1,13 +1,16 @@
 from setuptools import setup, find_packages
-from source_infuser import __version__
+import source_infuser as psi
 
 def read_file(filename):
     with open(filename, encoding='utf-8') as f:
         return f.read()
+    
+def get_version():
+    return psi.__version__
 
 setup(
     name='source_infuser',
-    version=__version__,  # Update this version before each release
+    version=get_version(),  # Update this version before each release
     author='Ivan Zhovannik',
     author_email='i.zhovannik-at-maastrichtuniversity-dot-nl',
     description='A package to prepare your software project for continuous infusion into your AI assistant',
